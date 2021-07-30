@@ -1,22 +1,26 @@
 const validateLineup = (lineup) => {
-  let newArray = []
-  let newObj = {}
+  for (let i = 0; i < lineup.length; i++) {
+    let count = lineup[i]
 
-  lineup.forEach(salaries => {
-    if (newObj[salaries.lineup]) {
-      newArray.push(salaries.salary)
-    } let sum = 0
-
-    for (const [salary] of Object.entries(newObj)) if (lineup.hasOwnProperty(salary)) {
-      sum += parseFloat(lineup[salary])
-    }
-
-    if (sum <= 45000) {
+    if (count.position['OF'] <= 3 && count.position['P', 'C', '1B', '2B', 'SS'] === 1) {
       return true
     }
 
-    else return false
-  })
+    if (count.teamid >= 2 || count.gameid >= 3) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const salaries = lineup.reduce((totalSum, lineup) => {
+    return lineup.salary + totalSum
+  }, 0)
+
+  if (salaries <= 45000) {
+    return true }
+
+  else { return false }
 }
 
 
