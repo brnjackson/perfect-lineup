@@ -1,9 +1,8 @@
 const expect = require('chai').expect
-const { describe, it } = require('mocha')
 const validateLineup = require('./index')
 
 describe('validateLineup', () => {
-  xit('returns true when the lineup satisfies all conditions', () => {
+  it('returns true when the lineup satisfies all conditions', () => {
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
     }, {
